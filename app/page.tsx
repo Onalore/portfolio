@@ -1,65 +1,28 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          
-          <li>
-            Que descanses MAMEEEEEE
-          </li>
-        </ol>
-
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <section className="text-center mt-20">
+      <Image
+        src="/profile.jpg"
+        alt="Foto de perfil"
+        width={140}
+        height={140}
+        className="rounded-full mx-auto mb-6 shadow-md"
+      />
+      <h1 className="text-4xl font-bold mb-3">¡Hola! Soy [Tu Nombre]</h1>
+      <p className="text-gray-600 text-lg mb-6">
+        Desarrolladora web enfocada en construir experiencias simples, limpias y funcionales.
+      </p>
+      <div className="space-x-4">
+        <Link href="/projects" className="px-4 py-2 bg-indigo-600 text-white rounded-lg">
+          Ver proyectos
+        </Link>
+        <Link href="/contact" className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg">
+          Contacto
+        </Link>
+      </div>
+    </section>
   );
 }
