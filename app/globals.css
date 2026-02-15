@@ -6,8 +6,12 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-primary: #9d182b;
+  --color-accent: #f4bd33;
+  --color-background: #f2e0d2;
+  --color-softPink: #f2b4be;
+  --color-wine: #703b43;
+  --color-mutedRose: #caa4a4;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
