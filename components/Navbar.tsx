@@ -4,6 +4,8 @@ import { useNavbarTheme } from "@/hooks/useNavbarTheme";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { Agbalumo } from "next/font/google";
+import LanguageDropdown from "./LanguageDropdown";
+import { useTranslations } from "next-intl";
 
 const agbalumo = Agbalumo({
   subsets: ["latin"],
@@ -12,17 +14,18 @@ const agbalumo = Agbalumo({
 
 export default function Navbar({ scrolled }: { scrolled: boolean }) {
   const isLight = useNavbarTheme();
+  const t = useTranslations("navbar");
 
   return (
     <nav
       className={clsx(
         "fixed top-0 left-0 w-full z-50 h-[72px]",
-        "flex items-center justify-between px-8",
+        "grid grid-cols-3 items-center px-8",
         "transition-colors duration-300",
-        isLight ? "text-white" : "text-burgundy",
+        isLight ? "text-primary" : "text-primary",
       )}
     >
-      <div className="w-[160px] flex items-center">
+      <div className="w-[160px] flex h-full items-center">
         {scrolled && (
           <motion.div
             layoutId="main-title"
@@ -60,11 +63,17 @@ export default function Navbar({ scrolled }: { scrolled: boolean }) {
           </motion.div>
         )}
       </div>
-      <ul className="flex gap-8 text-sm uppercase tracking-widest text-primary">
-        <li>Sobre mí</li>
-        <li>Proyectos</li>
-        <li>Contacto</li>
-      </ul>
+      <div className="flex items-center h-full justify-center">
+        <ul className="flex gap-8 text-sm uppercase tracking-widest text-primary">
+          <li>{t("about")}</li>
+          <li>{t("projects")}</li>
+          <li>{t("contact")}</li>
+        </ul>
+      </div>
+
+      <div className="flex items-center h-full justify-end">
+        <LanguageDropdown />
+      </div>
     </nav>
   );
 }

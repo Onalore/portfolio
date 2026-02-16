@@ -1,0 +1,11 @@
+{
+  "navbar": {
+    "about": "Su di me",
+    "projects": "Progetti",
+    "contact": "Contatto"
+  },
+  "hero": {
+    "title": "Ona Loré",
+    "subtitle": "Full Stack Developer · UI/UX & Creative Tech"
+  }
+}

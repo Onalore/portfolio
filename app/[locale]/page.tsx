@@ -1,5 +1,6 @@
 "use client";
 
+import AccentDivider from "@/components/AccentDivider";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import {
@@ -23,8 +24,9 @@ export default function Home() {
     <LayoutGroup>
       <Navbar scrolled={scrolled} />
       <main className="flex flex-col items-center">
-        {/* HERO */}
         <Hero scrolled={scrolled} />
+        <AccentDivider />
+
         <section className="min-h-screen flex flex-col justify-center items-center text-center">
           <motion.h1
             className="text-4xl sm:text-5xl font-semibold text-[#1E293B]"
