@@ -1,8 +1,10 @@
 "use client";
 
+import AboutSection from "@/components/AboutSection";
 import AccentDivider from "@/components/AccentDivider";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import TimelineSection from "@/components/TimelineSection";
 import {
   motion,
   LayoutGroup,
@@ -13,20 +15,23 @@ import { useState } from "react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [navScrolled, setNavScrolled] = useState(false);
 
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 100);
+    setNavScrolled(latest > 350);
   });
 
   return (
     <LayoutGroup>
-      <Navbar scrolled={scrolled} />
+      <Navbar scrolled={scrolled} navScrolled={navScrolled} />
       <main className="flex flex-col items-center">
         <Hero scrolled={scrolled} />
         <AccentDivider />
-
+        <AboutSection />
+        <TimelineSection />
         <section className="min-h-screen flex flex-col justify-center items-center text-center">
           <motion.h1
             className="text-4xl sm:text-5xl font-semibold text-[#1E293B]"
