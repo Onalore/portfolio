@@ -7,5 +7,14 @@
   "hero": {
     "title": "Ona Loré",
     "subtitle": "Full Stack Developer · UI/UX & Creative Tech"
+  },
+  "about": {
+    "title": "About Me",
+    "paragraphs": {
+      "p1": "I am a developer and designer with a restless mind. I move between the visual and the technical, between sensitivity and logic. I’m drawn to understanding how things work, but also how they feel.",
+      "p2": "I’m inspired by processes: imagining, taking things apart, putting them back together, shaping them.",
+      "p3": "And I’m inspired by people: their stories, what they want to build, what they seek to express. I work with technology, but always from a human perspective.",
+      "p4": "I appreciate the details that make everything work better."
+    }
   }
 }

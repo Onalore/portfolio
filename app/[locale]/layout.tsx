@@ -1,6 +1,13 @@
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import { Aboreto, Work_Sans } from "next/font/google";
+
+const aboreto = Aboreto({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-aboreto",
+});
 
 export const metadata = {
   title: "Portfolio | Tu Nombre",
@@ -29,7 +36,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={aboreto.variable}>
       <NextIntlClientProvider locale={locale} messages={messages}>
         <body className="bg-gray-50 text-gray-800">{children}</body>
       </NextIntlClientProvider>

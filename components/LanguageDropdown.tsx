@@ -5,10 +5,11 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useTransition } from "react";
+import clsx from "clsx";
 
 const locales = ["es", "en", "it"];
 
-export default function LanguageDropdown() {
+export default function LanguageDropdown({ navMode }: { navMode: String }) {
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -32,13 +33,10 @@ export default function LanguageDropdown() {
       {/* Botón */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="
-          flex items-center gap-2
-          text-primary
-          px-4 py-1.5
-          text-sm tracking-wide
-          transition-all duration-300
-        "
+        className={clsx(
+          "flex items-center gap-2 px-4 py-1.5 text-sm tracking-wide transition-all duration-300",
+          navMode === "light" ? "text-white" : "text-primary",
+        )}
       >
         <span className="uppercase">{currentLocale}</span>
 

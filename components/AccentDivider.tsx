@@ -9,7 +9,7 @@ export default function AccentDivider() {
       whileInView={{ scaleX: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true, amount: 0.8 }}
-      className="origin-left w-full h-[6px] bg-accent"
+      className="origin-left w-full h-[6px] bg-accent z-30"
     />
   );
 }

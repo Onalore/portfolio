@@ -16,8 +16,8 @@ type HeroProps = {
 export default function Hero({ scrolled }: { scrolled: boolean }) {
   return (
     <section
-      data-theme="dark"
-      className="relative min-h-screen w-full overflow-hidden"
+      data-nav="dark"
+      className="relative min-h-screen w-full overflow-hidden z-30"
     >
       {/* Imagen fondo */}
       <div className="absolute inset-0 -z-10">
@@ -82,7 +82,7 @@ export default function Hero({ scrolled }: { scrolled: boolean }) {
             className="text-primary
               text-base
               sm:text-lg
-              font-medium
+              font-normal
               leading-relaxed
               tracking-wide
               text-center

@@ -7,5 +7,42 @@
   "hero": {
     "title": "Ona Loré",
     "subtitle": "Full Stack Developer · UI/UX & Creative Tech"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "paragraphs": {
+      "p1": "Soy desarrolladora y diseñadora con una mente inquieta. Me muevo entre lo visual y lo técnico, entre lo sensible y lo lógico. Me atrae entender cómo funcionan las cosas, pero también cómo se sienten.",
+      "p2": "Me inspiran los procesos: imaginar, desarmar, volver a unir, darle forma.",
+      "p3": "Y me inspira la gente: las historias, lo que quieren construir, lo que buscan transmitir. Trabajo con tecnología, pero siempre desde un lugar humano.",
+      "p4": "Me gustan los detalles que hacen que todo funcione mejor."
+    }
+  },
+  "timeline": {
+    "title": "Mi camino EN LA PROGRAMACIÓN",
+    "subtitle": "... Y un poco en la vida",
+    "exp1": {
+      "title": "2020 — Pandemia\nBootcamp",
+      "description": "Mi camino empezó en un bootcamp de programación. Ahí creé mis primeros proyectos en React, experimenté con APIs y desarrollé pequeñas aplicaciones que despertaron algo en mí: la sensación de que podía transformar ideas en algo real."
+    },
+    "exp2": {
+      "title": "2021 — Primer trabajo como programadora",
+      "description": "Conseguí mi primer trabajo IT. Trabajé en:\ndiseño de interfaces (UI)\nsitios web en React\napps Android en Kotlin\nmantenimiento de sistemas en C#\nFue mi primera experiencia profesional armando productos para personas reales."
+    },
+    "exp3": {
+      "title": "2022–2024 — Analista de Sistemas",
+      "description": "Continué estudiando y obtuve el título de Analista de Sistemas, profundizando en arquitectura, lógica, bases de datos y buenas prácticas."
+    },
+    "exp4": {
+      "title": "2024 — Italia",
+      "description": "Me mudé a Italia para tramitar mi ciudadanía italiana y continué trabajando pero esta vez full remoto.\nAprendí a gestionar mis tiempos, a comunicar mejor y a mantener la calidad incluso desde la distancia."
+    },
+    "exp5": {
+      "title": "2025 — Cerdeña",
+      "description": "Tomé distancia de lo técnico para reconectar con lo humano.\nTrabajé en hospitality, viví cerca del mar y me abrí a un ritmo diferente.\nEse aire nuevo me devolvió creatividad, claridad y nuevas ganas de construir."
+    },
+    "exp6": {
+      "title": "Actualidad",
+      "description": "Hoy vivo en el sur de Italia como freelancer.\nDesarrollo proyectos propios, estudio Prompt Engineering, creo automatizaciones con N8N y hago croissants artesanales porque crear, en cualquier forma, es mi manera de estar en el mundo."
+    }
   }
 }
