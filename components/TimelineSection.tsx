@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 import clsx from "clsx";
 
 const experiences = [
@@ -17,7 +17,10 @@ const experiences = [
 
 export default function TimelineSection() {
   const t = useTranslations("timeline");
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [pointPositions, setPointPositions] = useState<number[]>([]);
+  const [lineHeight, setLineHeight] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -33,6 +36,37 @@ export default function TimelineSection() {
     damping: 20,
     mass: 0.5,
   });
+
+  useLayoutEffect(() => {
+    if (!sectionRef.current) return;
+
+    const calculate = () => {
+      const sectionRect = sectionRef.current!.getBoundingClientRect();
+
+      const positions = cardRefs.current.map((card) => {
+        if (!card) return 0;
+
+        const rect = card.getBoundingClientRect();
+
+        // punto apenas debajo del inicio de la card
+        return rect.top - sectionRect.top + 20;
+      });
+
+      setPointPositions(positions);
+    };
+
+    calculate();
+
+    const resizeObserver = new ResizeObserver(calculate);
+    resizeObserver.observe(sectionRef.current);
+
+    window.addEventListener("resize", calculate);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", calculate);
+    };
+  }, []);
 
   return (
     <section
@@ -62,6 +96,24 @@ export default function TimelineSection() {
           </p>
         </div>
       </motion.div>
+
+      {pointPositions.map((top, index) => {
+        const isLast = index === pointPositions.length - 1;
+        const isVisible = lineHeight >= top;
+
+        return (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.4 }}
+            className="hidden lg:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background z-20 shadow-[0_4px_20px_rgba(0,0,0,1)]"
+            style={{
+              top: isLast ? top - 40 : top,
+            }}
+          />
+        );
+      })}
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 auto-rows-[minmax(80px,auto)] gap-x-12 gap-y-8 items-start">
         {experiences.map((exp, index) => {
@@ -95,21 +147,11 @@ export default function TimelineSection() {
                     : "lg:col-start-2 flex justify-start pl-12 lg:translate-y-20 gap-y-10",
               )}
             >
-              {/* Punto */}
-              <motion.div
-                style={{ opacity: pointOpacity, scale: pointOpacity }}
-                className={clsx(
-                  "hidden lg:block absolute",
-                  "left-[50.1%] -translate-x-1/2",
-                  isLast
-                    ? "top-0 -translate-y-1/2"
-                    : "top-1/2 -translate-y-1/2",
-                  "w-4 h-4 rounded-full bg-background z-20",
-                )}
-              />
-
               {/* Card */}
               <div
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
                 className={clsx(
                   "group relative z-20",
                   "bg-black/10 hover:bg-black/25",
