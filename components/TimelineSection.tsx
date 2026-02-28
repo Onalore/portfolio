@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useRef, useLayoutEffect, useState } from "react";
+import { useRef, useLayoutEffect, useState, useEffect } from "react";
 import clsx from "clsx";
 
 const experiences = [
@@ -15,6 +15,8 @@ const experiences = [
   { key: "exp6" },
 ];
 
+const LAST_POINT_OFFSET = 120;
+
 export default function TimelineSection() {
   const t = useTranslations("timeline");
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -22,20 +24,36 @@ export default function TimelineSection() {
   const [pointPositions, setPointPositions] = useState<number[]>([]);
   const [lineHeight, setLineHeight] = useState(0);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start 80%", "end 60%"],
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
 
-  const lineEnd = (experiences.length - 0.5) / experiences.length;
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const sectionTop = sectionRect.top + window.scrollY;
 
-  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 0.85]);
+      const scrollPosition = window.scrollY;
 
-  const smoothScale = useSpring(scaleY, {
-    stiffness: 80,
-    damping: 20,
-    mass: 0.5,
-  });
+      // 👇 que empiece cuando el section esté a mitad de pantalla
+      const startOffset = window.innerHeight * 0.5;
+
+      const rawProgress = scrollPosition - sectionTop + startOffset;
+
+      // 👇 que termine en el último punto
+      const maxHeight =
+        pointPositions.length > 0
+          ? pointPositions[pointPositions.length - 1] - LAST_POINT_OFFSET
+          : 0;
+
+      const clamped = Math.max(0, Math.min(rawProgress, maxHeight));
+
+      setLineHeight(clamped);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pointPositions]);
 
   useLayoutEffect(() => {
     if (!sectionRef.current) return;
@@ -76,8 +94,15 @@ export default function TimelineSection() {
     >
       {/* Línea vertical */}
       <motion.div
-        style={{ scaleY: smoothScale }}
-        className="origin-top absolute  -translate-x-1/2 left-[50.0%] h-full w-[2px] bg-gradient-to-b from-background via-background/80 to-background/40 z-10"
+        style={{ height: lineHeight }}
+        className="
+          origin-top absolute 
+          left-6 lg:left-1/2 
+          lg:-translate-x-1/2
+          w-[2px]
+          bg-gradient-to-b from-background via-background/80 to-background/40
+          z-10
+        "
       />
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -86,7 +111,7 @@ export default function TimelineSection() {
         viewport={{ once: true }}
         className="text-center text-white title-font mt-30 relative z-20"
       >
-        <div className="bg-primary px-8 py-6 text-center">
+        <div className="lg:bg-primary px-8 py-6 text-center">
           <h2 className="text-2xl sm:text-3xl font-light tracking-wide">
             {t("title")}
           </h2>
@@ -99,7 +124,7 @@ export default function TimelineSection() {
 
       {pointPositions.map((top, index) => {
         const isLast = index === pointPositions.length - 1;
-        const isVisible = lineHeight >= top;
+        const isVisible = lineHeight >= top - LAST_POINT_OFFSET;
 
         return (
           <motion.div
@@ -107,9 +132,18 @@ export default function TimelineSection() {
             initial={{ opacity: 0, scale: 0 }}
             animate={isVisible ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.4 }}
-            className="hidden lg:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background z-20 shadow-[0_4px_20px_rgba(0,0,0,1)]"
+            className="
+              absolute 
+              left-6 lg:left-1/2 
+              lg:-translate-x-1/2
+              -translate-x-1/2 lg:translate-x+1
+              w-4 h-4 rounded-full
+              bg-background
+              z-20
+              shadow-[0_4px_20px_rgba(0,0,0,0.7)]
+            "
             style={{
-              top: isLast ? top - 40 : top,
+              top: isLast ? top - LAST_POINT_OFFSET : top,
             }}
           />
         );
@@ -120,16 +154,6 @@ export default function TimelineSection() {
           const isLeft = index % 2 === 0;
           const total = experiences.length;
           const isLast = index === total - 1;
-
-          const segment = 1 / total;
-          const start = segment * index + segment * 0.6;
-          const end = segment * index + segment * 1;
-
-          const pointOpacity = useTransform(
-            scrollYProgress,
-            [start, end],
-            [0, 1],
-          );
 
           return (
             <motion.div
@@ -161,7 +185,7 @@ export default function TimelineSection() {
                   "transition-all duration-500 ease-out hover:-translate-y-1",
                   "p-7 w-full hover:border-white/20",
                   isLast
-                    ? "lg:justify-center mt-50 lg:w-[55%]"
+                    ? "lg:justify-center mt-10 lg:w-[55%]"
                     : isLeft
                       ? "lg:justify-start pl-15 lg:ml-5"
                       : "lg:justify-end pr-15 lg:mr-5",
