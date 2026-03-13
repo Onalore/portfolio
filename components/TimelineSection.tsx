@@ -15,7 +15,7 @@ const experiences = [
   { key: "exp6" },
 ];
 
-const LAST_POINT_OFFSET = 120;
+const LAST_POINT_OFFSET = window.innerWidth < 1024 ? 100 : 120;
 
 export default function TimelineSection() {
   const t = useTranslations("timeline");
@@ -23,6 +23,7 @@ export default function TimelineSection() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [pointPositions, setPointPositions] = useState<number[]>([]);
   const [lineHeight, setLineHeight] = useState(0);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +48,22 @@ export default function TimelineSection() {
       const clamped = Math.max(0, Math.min(rawProgress, maxHeight));
 
       setLineHeight(clamped);
+
+      cardRefs.current.forEach((card, index) => {
+        if (!card) return;
+
+        const rect = card.getBoundingClientRect();
+        const cardMiddle = rect.top + rect.height / 2;
+
+        const viewportMiddle = window.innerHeight / 2;
+
+        if (
+          cardMiddle >= viewportMiddle - 50 &&
+          cardMiddle <= viewportMiddle + 50
+        ) {
+          setActiveCard(index);
+        }
+      });
     };
 
     handleScroll();
@@ -97,8 +114,8 @@ export default function TimelineSection() {
         style={{ height: lineHeight }}
         className="
           origin-top absolute 
-          left-6 lg:left-1/2 
-          lg:-translate-x-1/2
+          left-1/2 
+          -translate-x-1/2
           w-[2px]
           bg-gradient-to-b from-background via-background/80 to-background/40
           z-10
@@ -109,9 +126,9 @@ export default function TimelineSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-center text-white title-font mt-30 relative z-20"
+        className="text-center text-white title-font mt-30 mb-10 relative z-20"
       >
-        <div className="lg:bg-primary px-8 py-6 text-center">
+        <div className="bg-primary px-8 py-6 text-center">
           <h2 className="text-2xl sm:text-3xl font-light tracking-wide">
             {t("title")}
           </h2>
@@ -134,8 +151,7 @@ export default function TimelineSection() {
             transition={{ duration: 0.4 }}
             className="
               absolute 
-              left-6 lg:left-1/2 
-              lg:-translate-x-1/2
+              left-1/2
               -translate-x-1/2 lg:translate-x+1
               w-4 h-4 rounded-full
               bg-background
@@ -143,13 +159,16 @@ export default function TimelineSection() {
               shadow-[0_4px_20px_rgba(0,0,0,0.7)]
             "
             style={{
-              top: isLast ? top - LAST_POINT_OFFSET : top,
+              top:
+                isLast || window.innerWidth < 1024
+                  ? top - LAST_POINT_OFFSET
+                  : top,
             }}
           />
         );
       })}
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 auto-rows-[minmax(80px,auto)] gap-x-12 gap-y-8 items-start">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 auto-rows-[minmax(80px,auto)] gap-x-12 lg:gap-y-8 gap-y-14 items-start">
         {experiences.map((exp, index) => {
           const isLeft = index % 2 === 0;
           const total = experiences.length;
@@ -163,12 +182,12 @@ export default function TimelineSection() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
               className={clsx(
-                "relative",
+                "relative flex justify-center px-5",
                 isLast
                   ? "lg:col-span-2 flex justify-center"
                   : isLeft
-                    ? "lg:col-start-1 flex justify-end pr-12"
-                    : "lg:col-start-2 flex justify-start pl-12 lg:translate-y-20 gap-y-10",
+                    ? "lg:col-start-1 flex justify-end lg:pr-12"
+                    : "lg:col-start-2 flex justify-start lg:pl-12 lg:translate-y-20 gap-y-10",
               )}
             >
               {/* Card */}
@@ -178,17 +197,20 @@ export default function TimelineSection() {
                 }}
                 className={clsx(
                   "group relative z-20",
-                  "bg-black/10 hover:bg-black/25",
-                  "backdrop-blur-md hover:backdrop-blur-lg",
+                  "bg-black/10",
+                  "backdrop-blur-md",
                   "rounded-3xl",
                   "shadow-[0_25px_60px_-10px_rgba(0,0,0,0.45)] hover:shadow-[0_35px_80px_-10px_rgba(0,0,0,0.6)]",
                   "transition-all duration-500 ease-out hover:-translate-y-1",
-                  "p-7 w-full hover:border-white/20",
+                  "p-7 w-full",
+                  activeCard === index &&
+                    "bg-black/25 backdrop-blur-lg -translate-y-1",
+                  "lg:hover:bg-black/25 lg:hover:backdrop-blur-lg lg:hover:-translate-y-1",
                   isLast
-                    ? "lg:justify-center mt-10 lg:w-[55%]"
+                    ? "lg:justify-center lg:mt-10 lg:w-[55%]"
                     : isLeft
-                      ? "lg:justify-start pl-15 lg:ml-5"
-                      : "lg:justify-end pr-15 lg:mr-5",
+                      ? "lg:justify-start lg:pl-15 lg:ml-5"
+                      : "lg:justify-end lg:pr-15 lg:mr-5",
 
                   index === 0 && "lg:w-[100%]",
                   index === 1 && "lg:w-[85%]",
