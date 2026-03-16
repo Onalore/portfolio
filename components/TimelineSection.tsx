@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRef, useLayoutEffect, useState, useEffect } from "react";
@@ -15,9 +15,8 @@ const experiences = [
   { key: "exp6" },
 ];
 
+const LAST_POINT_OFFSET = 120;
 export default function TimelineSection() {
-  const LAST_POINT_OFFSET = window.innerWidth < 1024 ? 100 : 120;
-
   const t = useTranslations("timeline");
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
