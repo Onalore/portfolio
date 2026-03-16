@@ -1,6 +1,5 @@
 "use client";
 import { Agbalumo } from "next/font/google";
-import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const agbalumo = Agbalumo({

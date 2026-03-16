@@ -9,7 +9,7 @@ import clsx from "clsx";
 
 const locales = ["es", "en", "it"];
 
-export default function LanguageDropdown({ navMode }: { navMode: String }) {
+export default function LanguageDropdown({ navMode }: { navMode: string }) {
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
