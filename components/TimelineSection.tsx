@@ -15,12 +15,14 @@ const experiences = [
   { key: "exp6" },
 ];
 
-const LAST_POINT_OFFSET = window.innerWidth < 1024 ? 100 : 120;
-
 export default function TimelineSection() {
+  const LAST_POINT_OFFSET = window.innerWidth < 1024 ? 100 : 120;
+
   const t = useTranslations("timeline");
+
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const [pointPositions, setPointPositions] = useState<number[]>([]);
   const [lineHeight, setLineHeight] = useState(0);
   const [activeCard, setActiveCard] = useState<number | null>(null);
