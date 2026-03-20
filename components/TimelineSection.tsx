@@ -5,6 +5,19 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRef, useLayoutEffect, useState, useEffect } from "react";
 import clsx from "clsx";
+import { Aboreto, Work_Sans } from "next/font/google";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+const aboreto = Aboreto({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-aboreto",
+});
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-work-sans",
+});
 
 const experiences = [
   { key: "exp1" },
@@ -16,8 +29,10 @@ const experiences = [
 ];
 
 const LAST_POINT_OFFSET = 120;
+
 export default function TimelineSection() {
   const t = useTranslations("timeline");
+  const isMobile = useMediaQuery("(max-width: 1024px)");
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -108,13 +123,13 @@ export default function TimelineSection() {
     <section
       data-nav="light"
       ref={sectionRef}
-      className="relative w-full bg-primary pb-40"
+      className="relative w-full bg-primary pb-40 flex flex-col"
     >
       {/* Línea vertical */}
       <motion.div
         style={{ height: lineHeight }}
         className="
-          origin-top absolute 
+          origin-top absolute
           left-1/2 
           -translate-x-1/2
           w-[2px]
@@ -123,14 +138,14 @@ export default function TimelineSection() {
         "
       />
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-center text-white title-font mt-30 mb-10 relative z-20"
+        className="text-center text-white font-title mb-10 relative z-20 mt-30"
       >
-        <div className="bg-primary px-8 py-6 text-center">
-          <h2 className="text-2xl sm:text-3xl font-light tracking-wide">
+        <div className="bg-primary px-8 py-6  text-center">
+          <h2 className="text-2xl sm:text-3xl font-light tracking-wide pt-30">
             {t("title")}
           </h2>
 
@@ -147,29 +162,27 @@ export default function TimelineSection() {
         return (
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            initial={{ opacity: 0, scale: 0, x: "-50%" }}
+            animate={
+              isVisible ? { opacity: 1, scale: 1, x: "-50%" } : { x: "-50%" }
+            }
             transition={{ duration: 0.4 }}
             className="
               absolute 
               left-1/2
-              -translate-x-1/2 lg:translate-x+1
               w-4 h-4 rounded-full
               bg-background
               z-20
               shadow-[0_4px_20px_rgba(0,0,0,0.7)]
             "
             style={{
-              top:
-                isLast || window.innerWidth < 1024
-                  ? top - LAST_POINT_OFFSET
-                  : top,
+              top: isLast || isMobile ? top - LAST_POINT_OFFSET : top,
             }}
           />
         );
       })}
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 auto-rows-[minmax(80px,auto)] gap-x-12 lg:gap-y-8 gap-y-14 items-start">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 auto-rows-[minmax(80px,auto)] gap-y-4 items-start">
         {experiences.map((exp, index) => {
           const isLeft = index % 2 === 0;
           const total = experiences.length;
@@ -183,12 +196,12 @@ export default function TimelineSection() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true, amount: 0.3 }}
               className={clsx(
-                "relative flex justify-center px-5",
+                "relative flex px-5",
                 isLast
                   ? "lg:col-span-2 flex justify-center"
                   : isLeft
-                    ? "lg:col-start-1 flex justify-end lg:pr-12"
-                    : "lg:col-start-2 flex justify-start lg:pl-12 lg:translate-y-20 gap-y-10",
+                    ? "lg:col-start-1 flex justify-end"
+                    : "lg:col-start-2 flex justify-start",
               )}
             >
               {/* Card */}
@@ -210,11 +223,11 @@ export default function TimelineSection() {
                   isLast
                     ? "lg:justify-center lg:mt-10 lg:w-[55%]"
                     : isLeft
-                      ? "lg:justify-start lg:pl-15 lg:ml-5"
-                      : "lg:justify-end lg:pr-15 lg:mr-5",
+                      ? "lg:justify-start lg:pl-15 lg:ml-5 lg:mr-8"
+                      : "lg:justify-end lg:pr-15 lg:mr-5 lg:ml-8",
 
                   index === 0 && "lg:w-[100%]",
-                  index === 1 && "lg:w-[85%]",
+                  index === 1 && "lg:w-[85%] lg:mt-20",
                   index === 2 && "lg:w-[75%]",
                   index === 3 && "lg:w-[75%] lg:top-20",
                   index === 4 && "lg:w-[85%]",
@@ -222,7 +235,7 @@ export default function TimelineSection() {
               >
                 <h3
                   className={clsx(
-                    "text-xl mb-3 text-white text-font",
+                    "text-xl mb-3 text-white font-text",
                     isLast
                       ? "lg:text-center"
                       : isLeft
@@ -234,7 +247,7 @@ export default function TimelineSection() {
                 </h3>
                 <p
                   className={clsx(
-                    "text-white leading-relaxed",
+                    "text-white leading-relaxed font-text",
                     isLast
                       ? "lg:text-center"
                       : isLeft

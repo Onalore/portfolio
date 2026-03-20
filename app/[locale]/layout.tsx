@@ -9,6 +9,11 @@ const aboreto = Aboreto({
   variable: "--font-aboreto",
 });
 
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-work-sans",
+});
+
 export const metadata = {
   title: "Portfolio | Tu Nombre",
   description: "Portfolio personal creado con Next.js",
@@ -36,7 +41,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} className={aboreto.variable}>
+    <html lang={locale} className={`${aboreto.variable} ${workSans.variable}`}>
       <NextIntlClientProvider locale={locale} messages={messages}>
         <body className="bg-gray-50 text-gray-800">{children}</body>
       </NextIntlClientProvider>

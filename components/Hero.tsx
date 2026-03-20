@@ -34,8 +34,8 @@ export default function Hero({ scrolled }: { scrolled: boolean }) {
 
       {/* Contenido */}
 
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-[clamp(6rem,12vw,10rem)] flex items-center">
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none gap-20">
+        <div className="flex items-center mt-20">
           {!scrolled && (
             <motion.div
               layoutId="main-title"
@@ -73,25 +73,23 @@ export default function Hero({ scrolled }: { scrolled: boolean }) {
             </motion.div>
           )}
         </div>
-        <div className="absolute bottom-39 w-full flex justify-center">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-primary
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-primary
               text-base
               sm:text-lg
-              font-normal
+              font-title
               leading-relaxed
               tracking-wide
               text-center
               drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)]"
-          >
-            Full Stack Developer · UI/UX & Creative Tech
-            <br />
-            Analista de sistemas
-          </motion.p>
-        </div>
+        >
+          Full Stack Developer · UI/UX & Creative Tech
+          <br />
+          Analista de sistemas
+        </motion.p>
       </div>
     </section>
   );

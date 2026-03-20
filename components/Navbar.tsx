@@ -82,7 +82,7 @@ export default function Navbar({
         )}
       </div>
       <div className="flex items-center h-full justify-center">
-        <ul className="flex gap-8 text-sm uppercase tracking-widest">
+        <ul className="flex gap-8 text-sm uppercase tracking-widest font-title">
           <li>{t("about")}</li>
           <li>{t("projects")}</li>
           <li>{t("contact")}</li>
