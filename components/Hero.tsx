@@ -15,6 +15,7 @@ type HeroProps = {
 export default function Hero({ scrolled }: { scrolled: boolean }) {
   return (
     <section
+      id="hero"
       data-nav="dark"
       className="relative min-h-screen w-full overflow-hidden z-30"
     >

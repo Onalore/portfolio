@@ -28,7 +28,8 @@ const experiences = [
   { key: "exp6" },
 ];
 
-const LAST_POINT_OFFSET = 120;
+const LAST_POINT_OFFSET_DESKTOP = 80;
+const LAST_POINT_OFFSET_MOBILE = 120;
 
 export default function TimelineSection() {
   const t = useTranslations("timeline");
@@ -41,89 +42,73 @@ export default function TimelineSection() {
   const [lineHeight, setLineHeight] = useState(0);
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
+  const calculatePositions = () => {
+    if (!sectionRef.current) return;
+
+    const sectionRect = sectionRef.current.getBoundingClientRect();
+
+    const positions = cardRefs.current.map((card) => {
+      if (!card) return 0;
+
+      const rect = card.getBoundingClientRect();
+
+      return rect.top - sectionRect.top + 24;
+    });
+
+    setPointPositions(positions);
+  };
+
+  useLayoutEffect(() => {
+    calculatePositions();
+
+    const resizeObserver = new ResizeObserver(calculatePositions);
+
+    if (sectionRef.current) {
+      resizeObserver.observe(sectionRef.current);
+    }
+
+    window.addEventListener("resize", calculatePositions);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", calculatePositions);
+    };
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
+      calculatePositions();
+
       if (!sectionRef.current) return;
 
       const sectionRect = sectionRef.current.getBoundingClientRect();
       const sectionTop = sectionRect.top + window.scrollY;
 
-      const scrollPosition = window.scrollY;
-
-      // 👇 que empiece cuando el section esté a mitad de pantalla
       const startOffset = window.innerHeight * 0.5;
+      const rawProgress = window.scrollY - sectionTop + startOffset;
 
-      const rawProgress = scrollPosition - sectionTop + startOffset;
-
-      // 👇 que termine en el último punto
       const maxHeight =
         pointPositions.length > 0
-          ? pointPositions[pointPositions.length - 1] - LAST_POINT_OFFSET
+          ? pointPositions[pointPositions.length - 1] -
+            (isMobile ? LAST_POINT_OFFSET_MOBILE : LAST_POINT_OFFSET_DESKTOP)
           : 0;
 
       const clamped = Math.max(0, Math.min(rawProgress, maxHeight));
 
       setLineHeight(clamped);
-
-      cardRefs.current.forEach((card, index) => {
-        if (!card) return;
-
-        const rect = card.getBoundingClientRect();
-        const cardMiddle = rect.top + rect.height / 2;
-
-        const viewportMiddle = window.innerHeight / 2;
-
-        if (
-          cardMiddle >= viewportMiddle - 50 &&
-          cardMiddle <= viewportMiddle + 50
-        ) {
-          setActiveCard(index);
-        }
-      });
     };
 
-    handleScroll();
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pointPositions]);
 
-  useLayoutEffect(() => {
-    if (!sectionRef.current) return;
-
-    const calculate = () => {
-      const sectionRect = sectionRef.current!.getBoundingClientRect();
-
-      const positions = cardRefs.current.map((card) => {
-        if (!card) return 0;
-
-        const rect = card.getBoundingClientRect();
-
-        // punto apenas debajo del inicio de la card
-        return rect.top - sectionRect.top + 20;
-      });
-
-      setPointPositions(positions);
-    };
-
-    calculate();
-
-    const resizeObserver = new ResizeObserver(calculate);
-    resizeObserver.observe(sectionRef.current);
-
-    window.addEventListener("resize", calculate);
-
-    return () => {
-      resizeObserver.disconnect();
-      window.removeEventListener("resize", calculate);
-    };
-  }, []);
-
   return (
     <section
+      id="timeline"
       data-nav="light"
       ref={sectionRef}
-      className="relative w-full bg-primary pb-40 flex flex-col"
+      className="relative w-full bg-primary pb-40"
     >
       {/* Línea vertical */}
       <motion.div
@@ -142,10 +127,11 @@ export default function TimelineSection() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-center text-white font-title mb-10 relative z-20 mt-30"
+        style={{ marginTop: 60 }}
+        className="text-center text-white font-title mb-10 relative z-20"
       >
-        <div className="bg-primary px-8 py-6  text-center">
-          <h2 className="text-2xl sm:text-3xl font-light tracking-wide pt-30">
+        <div className="bg-primary px-8 py-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-light tracking-wide">
             {t("title")}
           </h2>
 
@@ -157,7 +143,10 @@ export default function TimelineSection() {
 
       {pointPositions.map((top, index) => {
         const isLast = index === pointPositions.length - 1;
-        const isVisible = lineHeight >= top - LAST_POINT_OFFSET;
+        const isVisible =
+          lineHeight >=
+          top -
+            (isMobile ? LAST_POINT_OFFSET_MOBILE : LAST_POINT_OFFSET_DESKTOP);
 
         return (
           <motion.div
@@ -176,13 +165,13 @@ export default function TimelineSection() {
               shadow-[0_4px_20px_rgba(0,0,0,0.7)]
             "
             style={{
-              top: isLast || isMobile ? top - LAST_POINT_OFFSET : top,
+              top: !isMobile && isLast ? top - LAST_POINT_OFFSET_DESKTOP : top,
             }}
           />
         );
       })}
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 auto-rows-[minmax(80px,auto)] gap-y-4 items-start">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 auto-rows-[minmax(80px,auto)] lg:gap-y-4 gap-y-14 items-start">
         {experiences.map((exp, index) => {
           const isLeft = index % 2 === 0;
           const total = experiences.length;
@@ -212,14 +201,14 @@ export default function TimelineSection() {
                 className={clsx(
                   "group relative z-20",
                   "bg-black/10",
-                  "backdrop-blur-md",
+                  "backdrop-blur-md transform-gpu will-change-transform",
                   "rounded-3xl",
                   "shadow-[0_25px_60px_-10px_rgba(0,0,0,0.45)] hover:shadow-[0_35px_80px_-10px_rgba(0,0,0,0.6)]",
-                  "transition-all duration-500 ease-out hover:-translate-y-1",
+                  "transition-all duration-500 ease-out",
                   "p-7 w-full",
                   activeCard === index &&
                     "bg-black/25 backdrop-blur-lg -translate-y-1",
-                  "lg:hover:bg-black/25 lg:hover:backdrop-blur-lg lg:hover:-translate-y-1",
+                  "hover:bg-black/25 hover:backdrop-blur hover:-translate-y-1",
                   isLast
                     ? "lg:justify-center lg:mt-10 lg:w-[55%]"
                     : isLeft
@@ -227,9 +216,9 @@ export default function TimelineSection() {
                       : "lg:justify-end lg:pr-15 lg:mr-5 lg:ml-8",
 
                   index === 0 && "lg:w-[100%]",
-                  index === 1 && "lg:w-[85%] lg:mt-20",
+                  index === 1 && "lg:w-[85%] lg:top-20",
                   index === 2 && "lg:w-[75%]",
-                  index === 3 && "lg:w-[75%] lg:top-20",
+                  index === 3 && "lg:w-[75%] lg:top-40",
                   index === 4 && "lg:w-[85%]",
                 )}
               >

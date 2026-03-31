@@ -38,6 +38,8 @@ export default function ProjectsSection() {
 
   return (
     <section
+      id="projects"
+      data-nav="dark"
       ref={sectionRef}
       className="
       relative

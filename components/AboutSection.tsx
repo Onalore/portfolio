@@ -28,6 +28,7 @@ export default function AboutSection() {
     <>
       {/* Imagen */}
       <section
+        id="about"
         data-nav="dark"
         ref={sectionRef}
         className="relative w-full min-h-[92vh] bg-primary"

@@ -34,7 +34,7 @@ export default function LanguageDropdown({ navMode }: { navMode: string }) {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={clsx(
-          "flex items-center gap-2 px-4 py-1.5 text-sm tracking-wide transition-all duration-300",
+          "flex items-center gap-2 px-4 py-1.5 text-lg lg:text-sm tracking-wide transition-all duration-300",
           navMode === "light" ? "text-white" : "text-primary",
         )}
       >
@@ -73,7 +73,7 @@ export default function LanguageDropdown({ navMode }: { navMode: string }) {
                 className="
                   w-full
                   px-4 py-2
-                  text-sm
+                  text-lg lg:text-sm
                   uppercase
                   hover:bg-primary/20
                   transition-colors
