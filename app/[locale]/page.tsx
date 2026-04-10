@@ -2,6 +2,8 @@
 
 import AboutSection from "@/components/AboutSection";
 import AccentDivider from "@/components/AccentDivider";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -34,11 +36,8 @@ export default function Home() {
         <AboutSection />
         <TimelineSection />
         <ProjectsSection />
-
-        <footer className="py-10 text-sm text-[#94A3B8]">
-          © {new Date().getFullYear()} Ona Loré. Creado con ❤️ en React +
-          Next.js.
-        </footer>
+        <ContactSection />
+        <Footer />
       </main>
     </LayoutGroup>
   );

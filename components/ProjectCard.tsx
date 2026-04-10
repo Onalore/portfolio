@@ -1,22 +1,42 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  image: string;
-  link: string;
+import { motion } from "framer-motion";
+import { Project } from "@/types/project";
+import { useTranslations } from "next-intl";
+
+type ProjectCardProps = {
+  project: Project;
+  onClick: () => void;
+};
+
+export default function ProjectCard({ project, onClick }: ProjectCardProps) {
+  const t = useTranslations("projects");
+
+  return (
+    <motion.div
+      layoutId={`card-${project.id}`}
+      onClick={onClick}
+      className="cursor-pointer group relative lg:rounded-3xl overflow-hidden will-change-transform"
+      initial={{ borderRadius: 24 }}
+      animate={{ borderRadius: 24 }}
+      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+    >
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-[300px] object-cover transition duration-700 group-hover:scale-105"
+      />
+
+      {/* overlay */}
+      <div className="absolute inset-0 bg-black/30 transition group-hover:bg-black/50" />
+
+      {/* contenido */}
+      <div className="absolute bottom-0 p-6 text-white">
+        <h3 className="text-xl font-title">{project.title}</h3>
+        <p className="text-sm opacity-80">
+          {t(`${project.translationKey}.description`)}
+        </p>
+      </div>
+    </motion.div>
+  );
 }
-
-export const ProjectCard = ({ title, description, image, link }: ProjectCardProps) => (
-  <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-    <Image src={image} alt={title} width={500} height={300} className="w-full h-48 object-cover" />
-    <div className="p-4">
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-600 mb-4">{description}</p>
-      <Link href={link} className="text-indigo-600 font-medium hover:underline" target="_blank">
-        Ver en GitHub →
-      </Link>
-    </div>
-  </div>
-);

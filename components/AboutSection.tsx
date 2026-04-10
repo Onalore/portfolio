@@ -68,7 +68,7 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  className="text-4xl font-light tracking-wide mb-8 text-primary title-font"
+                  className="text-4xl font-light tracking-wide mb-8 text-primary font-title"
                 >
                   {t("title")}
                 </motion.h2>

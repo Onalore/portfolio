@@ -64,7 +64,13 @@ export default function Navbar({
         {/* LOGO */}
         <div className="flex items-center">
           {scrolled && (
-            <motion.div>
+            <motion.div
+              layoutId="main-title"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative inline-block"
+            >
               <motion.h1
                 className={clsx(
                   agbalumo.className,
@@ -105,7 +111,7 @@ export default function Navbar({
             {links.map((link) => (
               <li
                 key={link.id}
-                className="relative cursor-pointer group"
+                className="relative cursor-pointer group font-bold"
                 onClick={() => handleScrollTo(link.id)}
               >
                 {link.label}
