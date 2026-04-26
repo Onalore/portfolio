@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#9d182b",
+        primary: "#9C192B",
         accent: "#f4bd33",
         background: "#f2e0d2",
         softPink: "#f2b4be",
@@ -16,6 +16,7 @@ export default {
         mono: "var(--font-geist-mono)",
         title: "var(--font-aboreto)",
         text: "var(--font-work-sans)",
+        agbalumo: ["var(--font-agbalumo)"],
       },
     },
   },

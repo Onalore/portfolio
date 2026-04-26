@@ -1,12 +1,13 @@
 {
   "navbar": {
     "about": "Sobre mí",
+    "journey": "Recorrido",
     "projects": "Proyectos",
     "contact": "Contacto"
   },
   "hero": {
-    "title": "Ona Loré",
-    "subtitle": "Full Stack Developer · UI/UX & Creative Tech"
+    "title": "Full Stack Developer · UI/UX & Creative Tech",
+    "subtitle": "Analista de sistemas"
   },
   "about": {
     "title": "Sobre mí",
@@ -43,6 +44,55 @@
     "exp6": {
       "title": "Actualidad",
       "description": "Hoy vivo en el sur de Italia como freelancer.\nDesarrollo proyectos propios, estudio Prompt Engineering, creo automatizaciones con N8N y hago croissants artesanales porque crear, en cualquier forma, es mi manera de estar en el mundo."
+    },
+    "img1": {
+      "title": "Temporada en Cerdeña",
+      "subtitle": "Una temporada de mar, trabajo y aire libre. Cambiar de ritmo me ayudó a volver a lo esencial."
+    },
+    "img2": {
+      "title": "Ciudadanía y nuevos comienzos",
+      "subtitle": "Un proceso largo que terminó abriéndome las puertas de Europa y llevándome a vivir allí."
+    },
+    "img3": {
+      "title": "Medialunas como en casa",
+      "subtitle": "Un proyecto que nació del juego: cocinar, crear, fotografiar y compartir un pedacito de Argentina."
     }
+  },
+  "projects": {
+    "title": "Algunos Proyectos",
+    "projectSummary": "Resumen del Proyecto",
+    "myRole": "Mi Rol",
+    "foodie": {
+      "description": "Aplicación de recetas con IA",
+      "summary": "Foodie es una aplicación móvil que genera recetas personalizadas según los ingredientes disponibles, las restricciones dietarias y la cantidad de comensales. Desarrollada como proyecto académico, ofrece un prototipo funcional que simplifica la planificación diaria y brinda sugerencias inteligentes basadas en Gemini AI. También incorpora escaneo de códigos de barras para productos regionales, facilitando la gestión del inventario de cocina.",
+      "myRole": "Me encargué del diseño del mockup y de su implementación fiel en el front‑end. También participé en el backend con Node.js, colaborando en la creación e integración de la API."
+    },
+    "petinder": {
+      "description": "Aplicación móvil para adopción responsable de mascotas",
+      "summary": "Petinder es una aplicación desarrollada en un marco académico para facilitar la adopción responsable de animales en situación de calle. El proyecto aborda dos problemas principales: la gran cantidad de animales sin hogar y la dificultad de encontrar un adoptante adecuado para cada caso. También busca reducir la tasa de devoluciones, que ocurre cuando el animal no se adapta al estilo de vida del adoptante. La app permite conectar a personas y mascotas de manera más precisa, aumentando las probabilidades de una adopción exitosa.",
+      "myRole": "Participé en el desarrollo del front‑end con React Native y Expo, integrando funcionalidades como mapas y autenticación con Firebase. También colaboré en el backend con Node.js, Express y Sequelize, trabajando con bases de datos MySQL."
+    },
+    "erp": {
+      "description": "Página web orientada a la administración y gestión interna",
+      "summary": "Este proyecto académico consistió en el desarrollo de una aplicación web centrada en la administración y gestión interna de una PyME. El sistema permite manejar información clave como empleados, posiciones, gerencias y centros de costo, siguiendo una estructura formal y orientada a procesos. El enfoque estuvo puesto en la organización, la lógica de negocio y la correcta implementación de los módulos administrativos.",
+      "myRole": "Participé en todas las etapas del proyecto: diseño de la estructura del sistema, creación de entidades, desarrollo de los módulos principales y configuración de la base de datos. Como adicional, realicé el despliegue completo de la aplicación, la base de datos y el servidor en Azure."
+    },
+    "personalPage": {
+      "description": "Página web responsive con enfoque en UX, animaciones y storytelling",
+      "summary": "Este proyecto consistió en el desarrollo de mi página web personal, una experiencia interactiva diseñada para transmitir mis habilidades en UI/UX y frontend avanzado. El objetivo fue crear una navegación fluida con animaciones que acompañaran la narrativa visual y reforzaran la identidad del sitio. El desafío principal fue integrar nuevas tecnologías y lograr un diseño responsive-first con transiciones suaves y una estructura clara.",
+      "myRole": "Diseñé y desarrollé completamente la página, implementando animaciones avanzadas con Framer Motion, estilos responsive con Tailwind y un sistema de internacionalización con i18n. También construí una timeline dinámica basada en cálculos de scroll y optimicé la experiencia visual para distintos dispositivos."
+    }
+  },
+  "contact": {
+    "title": "Construyamos algo juntos",
+    "subtitle": "Disponible para proyectos freelance, colaboraciones o posiciones en desarrollo digital de principio a fin.",
+    "whatsapp_label": "WhatsApp",
+    "whatsapp_value": "Chat directo",
+    "email_label": "Email",
+    "email_value": "Enviar correo",
+    "linkedin_label": "LinkedIn",
+    "linkedin_value": "Perfil profesional",
+    "cv_label": "CV",
+    "cv_value": "Descargar CV"
   }
 }

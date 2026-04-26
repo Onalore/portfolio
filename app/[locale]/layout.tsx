@@ -1,12 +1,18 @@
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
-import { Aboreto, Work_Sans } from "next/font/google";
+import { Aboreto, Work_Sans, Agbalumo } from "next/font/google";
 
 const aboreto = Aboreto({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-aboreto",
+});
+
+const agbalumo = Agbalumo({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-agbalumo",
 });
 
 const workSans = Work_Sans({
@@ -41,7 +47,10 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} className={`${aboreto.variable} ${workSans.variable}`}>
+    <html
+      lang={locale}
+      className={`${aboreto.variable} ${workSans.variable} ${agbalumo.variable}`}
+    >
       <NextIntlClientProvider locale={locale} messages={messages}>
         <body className="bg-gray-50 text-gray-800">{children}</body>
       </NextIntlClientProvider>

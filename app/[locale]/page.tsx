@@ -5,6 +5,7 @@ import AccentDivider from "@/components/AccentDivider";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import IntroLoader from "@/components/IntroLoader";
 import Navbar from "@/components/Navbar";
 import ProjectsSection from "@/components/ProjectsSection";
 import TimelineSection from "@/components/TimelineSection";
@@ -31,6 +32,7 @@ export default function Home() {
     <LayoutGroup>
       <Navbar scrolled={scrolled} navScrolled={navScrolled} />
       <main className="flex flex-col items-center">
+        <IntroLoader />
         <Hero scrolled={scrolled} />
         <AccentDivider />
         <AboutSection />

@@ -1,12 +1,13 @@
 {
   "navbar": {
     "about": "Su di me",
+    "journey": "Percorso",
     "projects": "Progetti",
     "contact": "Contatto"
   },
   "hero": {
-    "title": "Ona Loré",
-    "subtitle": "Full Stack Developer · UI/UX & Creative Tech"
+    "title": "Full Stack Developer · UI/UX & Creative Tech",
+    "subtitle": "Analista di sistemi"
   },
   "about": {
     "title": "Su di me",
@@ -16,5 +17,82 @@
       "p3": "Mi ispira anche la gente: le storie, ciò che vogliono costruire, ciò che cercano di trasmettere. Lavoro con la tecnologia, ma sempre da una prospettiva umana.",
       "p4": "Mi piacciono i dettagli che fanno funzionare tutto meglio."
     }
+  },
+  "timeline": {
+    "title": "Il mio percorso nella programmazione",
+    "subtitle": "... e un po’ nella vita",
+    "exp1": {
+      "title": "2020 — Pandemia\nBootcamp",
+      "description": "Il mio percorso è iniziato in un bootcamp di programmazione. Lì ho creato i miei primi progetti in React, sperimentato con API e sviluppato piccole applicazioni che mi hanno fatto capire una cosa: potevo trasformare idee in qualcosa di reale."
+    },
+    "exp2": {
+      "title": "2021 — Primo lavoro come sviluppatrice",
+      "description": "Ho ottenuto il mio primo lavoro IT. Ho lavorato su:\ndesign di interfacce (UI)\nsiti web in React\napp Android in Kotlin\nmanutenzione di sistemi in C#\nÈ stata la mia prima esperienza professionale costruendo prodotti per persone reali."
+    },
+    "exp3": {
+      "title": "2022–2024 — Analista di Sistemi",
+      "description": "Ho continuato a studiare e ho ottenuto il titolo di Analista di Sistemi, approfondendo architettura, logica, database e buone pratiche."
+    },
+    "exp4": {
+      "title": "2024 — Italia",
+      "description": "Mi sono trasferita in Italia per ottenere la cittadinanza e ho continuato a lavorare full remote.\nHo imparato a gestire meglio il tempo, comunicare con più chiarezza e mantenere la qualità anche a distanza."
+    },
+    "exp5": {
+      "title": "2025 — Sardegna",
+      "description": "Mi sono allontanata dalla parte tecnica per riconnettermi con quella umana.\nHo lavorato nell’hospitality, ho vissuto vicino al mare e ho seguito un ritmo diverso.\nQuell’aria nuova mi ha restituito creatività, lucidità e nuove energie."
+    },
+    "exp6": {
+      "title": "Oggi",
+      "description": "Oggi vivo nel sud Italia come freelancer.\nSviluppo progetti miei, studio Prompt Engineering, creo automazioni con N8N e preparo croissant artigianali — perché creare, in qualsiasi forma, è il mio modo di stare al mondo."
+    },
+    "img1": {
+      "title": "Stagione in Sardegna",
+      "subtitle": "Un periodo di mare, lavoro e vita all’aria aperta. Cambiare ritmo mi ha aiutato a tornare all’essenziale."
+    },
+    "img2": {
+      "title": "Cittadinanza e nuovi inizi",
+      "subtitle": "Un percorso lungo che mi ha aperto le porte dell’Europa e mi ha portata a vivere qui."
+    },
+    "img3": {
+      "title": "Medialunas come a casa",
+      "subtitle": "Un progetto nato per gioco: cucinare, creare, fotografare e condividere un pezzetto d’Argentina."
+    }
+  },
+  "projects": {
+    "title": "Alcuni Progetti",
+    "projectSummary": "Riepilogo del Progetto",
+    "myRole": "Il Mio Ruolo",
+    "foodie": {
+      "description": "App di generazione di ricette basata sull’IA",
+      "summary": "Foodie è un’app mobile che genera ricette personalizzate in base agli ingredienti disponibili, alle restrizioni alimentari e al numero di commensali. Sviluppata come progetto accademico, offre un prototipo funzionale che semplifica la pianificazione dei pasti quotidiani e fornisce suggerimenti intelligenti basati su Gemini AI. Include anche la scansione dei codici a barre per prodotti regionali, facilitando la gestione dell’inventario della cucina.",
+      "myRole": "Mi sono occupata del design del mockup e della sua implementazione fedele nel front‑end. Ho inoltre contribuito al backend con Node.js, collaborando alla creazione e integrazione dell’API."
+    },
+    "petinder": {
+      "description": "App mobile per l’adozione responsabile degli animali",
+      "summary": "Petinder è un progetto accademico creato per migliorare il processo di adozione responsabile degli animali. Affronta due problemi principali: l’elevato numero di animali che vivono per strada e la difficoltà di trovare l’adottante giusto per ogni caso. L’app mira anche a ridurre il tasso di restituzione, che spesso avviene quando l’animale adottato non si adatta allo stile di vita della persona. Petinder permette di mettere in contatto persone e animali in modo più accurato, aumentando le probabilità di un’adozione riuscita e duratura.",
+      "myRole": "Ho contribuito allo sviluppo del front‑end con React Native ed Expo, integrando funzionalità come mappe e autenticazione tramite Firebase. Ho inoltre collaborato al backend con Node.js, Express e Sequelize, lavorando con un database MySQL."
+    },
+    "erp": {
+      "description": "Applicazione web orientata all’amministrazione e alla gestione interna",
+      "summary": "Questo progetto accademico ha previsto lo sviluppo di un’applicazione web focalizzata sull’amministrazione e la gestione interna di una piccola azienda. Il sistema consente di gestire informazioni chiave come dipendenti, posizioni, direzioni e centri di costo, seguendo un approccio strutturato e orientato ai processi. L’attenzione è stata posta sull’organizzazione, sulla logica di business e sulla corretta implementazione dei moduli amministrativi.",
+      "myRole": "Ho partecipato a tutte le fasi del progetto: progettazione della struttura del sistema, creazione delle entità, sviluppo dei moduli principali e configurazione del database. Inoltre, ho effettuato il deploy dell’applicazione, del database e del server su Azure."
+    },
+    "personalPage": {
+      "description": "Pagina web responsive con focus su UX, animazioni e storytelling",
+      "summary": "Questo progetto ha riguardato lo sviluppo del mio sito personale, un’esperienza interattiva pensata per mostrare le mie competenze in UI/UX e frontend avanzato. L’obiettivo era creare una navigazione fluida con animazioni che accompagnassero la narrazione visiva e rafforzassero l’identità del sito. La sfida principale è stata integrare nuove tecnologie ottenendo al tempo stesso un design responsive‑first con transizioni morbide e una struttura chiara.",
+      "myRole": "Ho progettato e sviluppato completamente il sito, implementando animazioni avanzate con Framer Motion, stile responsive con Tailwind e un sistema di internazionalizzazione tramite i18n. Ho inoltre realizzato una timeline dinamica basata su calcoli di scroll e ottimizzato l’esperienza visiva su diversi dispositivi."
+    }
+  },
+  "contact": {
+    "title": "Costruiamo qualcosa insieme",
+    "subtitle": "Disponibile per progetti freelance, collaborazioni o ruoli nello sviluppo digitale dall’inizio alla fine.",
+    "whatsapp_label": "WhatsApp",
+    "whatsapp_value": "Chat diretta",
+    "email_label": "Email",
+    "email_value": "Invia email",
+    "linkedin_label": "LinkedIn",
+    "linkedin_value": "Profilo professionale",
+    "cv_label": "CV",
+    "cv_value": "Scarica CV"
   }
 }

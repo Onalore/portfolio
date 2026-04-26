@@ -3,31 +3,34 @@
 import { motion } from "framer-motion";
 import { Mail, Download, Linkedin, MessageCircle } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 export default function ContactSection() {
+  const t = useTranslations("contact");
+
   const contacts = [
     {
-      label: "WhatsApp",
-      value: "Chat directo",
+      label: t("whatsapp_label"),
+      value: t("whatsapp_value"),
       icon: MessageCircle,
       href: "https://wa.me/393508219639",
       primary: true,
     },
     {
-      label: "Email",
-      value: "Enviar correo",
+      label: t("email_label"),
+      value: t("email_value"),
       icon: Mail,
       href: "mailto:ona.lore5@gmail.com",
     },
     {
-      label: "LinkedIn",
-      value: "Perfil profesional",
-      icon: FaLinkedin,
+      label: t("linkedin_label"),
+      value: t("linkedin_value"),
+      icon: Linkedin,
       href: "https://www.linkedin.com/in/ona-lore/",
     },
     {
-      label: "CV",
-      value: "Descargar CV",
+      label: t("cv_label"),
+      value: t("cv_label"),
       icon: Download,
       href: "/cv.pdf",
     },
@@ -47,14 +50,9 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-20"
         >
-          <h2 className="text-3xl lg:text-4xl font-title mb-4">
-            Let's build something together
-          </h2>
+          <h2 className="text-3xl lg:text-4xl font-title mb-4">{t("title")}</h2>
 
-          <p className="opacity-70 max-w-xl mx-auto">
-            Disponible para proyectos freelance, colaboraciones o posiciones
-            frontend / UI.
-          </p>
+          <p className="opacity-70 max-w-xl mx-auto">{t("subtitle")}</p>
         </motion.div>
 
         {/* cards */}

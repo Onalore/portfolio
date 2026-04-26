@@ -16,15 +16,25 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
     <motion.div
       layoutId={`card-${project.id}`}
       onClick={onClick}
-      className="cursor-pointer group relative lg:rounded-3xl overflow-hidden will-change-transform"
-      initial={{ borderRadius: 24 }}
-      animate={{ borderRadius: 24 }}
-      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+      className="
+    w-full max-w-[540px] mx-auto
+    h-[280px] sm:h-[320px] lg:h-[300px]
+    relative overflow-hidden
+    cursor-pointer group
+    rounded-2xl lg:rounded-3xl
+  "
     >
       <img
         src={project.image}
         alt={project.title}
-        className="w-full h-[300px] object-cover transition duration-700 group-hover:scale-105"
+        className="
+      absolute inset-0
+      w-full h-full
+      object-cover
+      scale-[1.15]
+      transition duration-700
+      group-hover:scale-[1.22]
+    "
       />
 
       {/* overlay */}

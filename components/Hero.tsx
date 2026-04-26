@@ -1,11 +1,6 @@
 "use client";
-import { Agbalumo } from "next/font/google";
-import { motion } from "framer-motion";
 
-const agbalumo = Agbalumo({
-  subsets: ["latin"],
-  weight: "400",
-});
+import { motion } from "framer-motion";
 
 type HeroProps = {
   heroVisible: boolean;
@@ -53,7 +48,7 @@ export default function Hero({ scrolled }: { scrolled: boolean }) {
               text-white
               opacity-80
               pointer-events-none
-              ${agbalumo.className}
+              font-agbalumo
               text-[clamp(4rem,10vw,8rem)]
             `}
               >
@@ -64,7 +59,7 @@ export default function Hero({ scrolled }: { scrolled: boolean }) {
               <h1
                 className={`
               relative
-              ${agbalumo.className}
+              font-agbalumo
               text-[clamp(4rem,10vw,8rem)]
               text-primary
             `}

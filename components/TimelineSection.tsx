@@ -42,6 +42,24 @@ export default function TimelineSection() {
   const [lineHeight, setLineHeight] = useState(0);
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
+  const timelinePics = [
+    {
+      title: t("img1.title"),
+      description: t("img1.subtitle"),
+      height: "h-[380px]",
+    },
+    {
+      title: t("img2.title"),
+      description: t("img2.subtitle"),
+      height: "h-[420px]",
+    },
+    {
+      title: t("img3.title"),
+      description: t("img3.subtitle"),
+      height: "h-[380px]",
+    },
+  ];
+
   const calculatePositions = () => {
     if (!sectionRef.current) return;
 
@@ -108,7 +126,7 @@ export default function TimelineSection() {
       id="timeline"
       data-nav="light"
       ref={sectionRef}
-      className="relative w-full bg-primary pb-40"
+      className="relative w-full bg-primary pb-40 bg-[linear-gradient(to_top,#f2e0d2_0%,#9d182b_10%,#9d182b_100%)]"
     >
       {/* Línea vertical */}
       <motion.div
@@ -257,57 +275,46 @@ export default function TimelineSection() {
         transition={{ staggerChildren: 0.2 }}
         className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-20 w-full lg:px-60 justify-center items-center"
       >
-        {[1, 2, 3].map((img, i) => {
-          const height = i === 1 ? "h-[420px]" : "h-[380px]";
+        {timelinePics.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: i * 0.2 }}
+            className={`group relative ${item.height} rounded-3xl overflow-hidden`}
+          >
+            <Image
+              src={`/timeline-${i + 1}.png`}
+              alt={item.title}
+              fill
+              className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+            />
 
-          return (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
-              className={`group relative ${height} rounded-3xl overflow-hidden cursor-pointer`}
-            >
-              {/* Image */}
-              <Image
-                src={`/timeline-${i + 1}.png`}
-                alt=""
-                fill
-                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
-              />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition duration-500" />
 
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition duration-500" />
+            <div className="absolute inset-0 flex flex-col justify-end p-8">
+              <motion.h3
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 + i * 0.2 }}
+                className="text-white text-2xl font-light mb-2"
+              >
+                {item.title}
+              </motion.h3>
 
-              {/* Vertical content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-8">
-                {/* Title */}
-                <motion.h3
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 + i * 0.2 }}
-                  className="text-white text-2xl font-light mb-2"
-                >
-                  Timeline Step
-                </motion.h3>
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 + i * 0.2 }}
+                className="text-white/70 text-sm max-w-xs transform translate-y-6 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500"
+              >
+                {item.description}
+              </motion.p>
+            </div>
 
-                {/* Description */}
-                <motion.p
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 + i * 0.2 }}
-                  className="text-white/70 text-sm max-w-xs transform translate-y-6 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500"
-                >
-                  Short description of this moment in the timeline. Appears on
-                  hover for a more editorial feel.
-                </motion.p>
-              </div>
-
-              {/* subtle hover line */}
-              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-white group-hover:w-full transition-all duration-700" />
-            </motion.div>
-          );
-        })}
+            <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-white group-hover:w-full transition-all duration-700" />
+          </motion.div>
+        ))}
       </motion.div>
     </section>
   );

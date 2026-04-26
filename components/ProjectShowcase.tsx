@@ -11,7 +11,7 @@ export default function ProjectShowcase({ projects }: { projects: Project[] }) {
 
   return (
     <>
-      <div className="grid md:grid-cols-2 gap-12">
+      <div className="grid md:grid-cols-2 gap-10 lg:px-10">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}

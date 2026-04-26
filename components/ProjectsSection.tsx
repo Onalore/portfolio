@@ -9,7 +9,7 @@ const projects = [
   {
     id: 1,
     title: "Foodie",
-    image: "/screen-scene.jpg",
+    image: "/screen-scene-44.png",
     translationKey: "foodie",
     techs: [
       "Kotlin",
@@ -35,7 +35,7 @@ const projects = [
   {
     id: 2,
     title: "Petinder",
-    image: "/screen-scene.jpg",
+    image: "/screen-scene-22.png",
     translationKey: "petinder",
     techs: [
       "React Native",
@@ -51,10 +51,6 @@ const projects = [
     ],
     buttons: [
       {
-        label: "Mockup",
-        href: "https://xd.adobe.com/view/eb3ead16-7c9e-46fc-b5de-95b32473ca8d-be6d/",
-      },
-      {
         label: "Frontend",
         href: "https://github.com/Onalore/PNT2_petinder_frontend",
       },
@@ -67,7 +63,7 @@ const projects = [
   {
     id: 3,
     title: "ERP",
-    image: "/screen-scene.jpg",
+    image: "/screen-scene-5.png",
     translationKey: "erp",
     techs: ["C#", ".NET", "ASP.NET MVC", "SQL Server"],
     buttons: [
@@ -84,7 +80,7 @@ const projects = [
   {
     id: 4,
     title: "Personal Page",
-    image: "/screen-scene.jpg",
+    image: "/screen-scene-6.png",
     translationKey: "personalPage",
     techs: [
       "Next.js",
@@ -121,21 +117,21 @@ export default function ProjectsSection() {
       className="
       relative
       w-full
-      py-40
+      py-10
       overflow-hidden
-      bg-[linear-gradient(to_bottom,#9d182b_0%,#f2e0d2_10%,#f2e0d2_100%)]
+      bg-background
       "
     >
       {/* RADIAL BACKGROUND BLOBS */}
 
-      <div className="absolute inset-0 -z-10 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <div
           className="
           absolute
-          top-[-200px]
+          top-[-0px]
           left-[10%]
-          w-[600px]
-          h-[600px]
+          w-[420px]
+          h-[420px]
           bg-[radial-gradient(circle,rgba(255,150,170,0.35)_0%,transparent_70%)]
           blur-3xl
           "
@@ -144,10 +140,10 @@ export default function ProjectsSection() {
         <div
           className="
           absolute
-          bottom-[-150px]
-          right-[5%]
-          w-[500px]
-          h-[500px]
+          bottom-[60px]
+          right-[0%]
+          w-[520px]
+          h-[420px]
           bg-[radial-gradient(circle,rgba(255,120,160,0.35)_0%,transparent_70%)]
           blur-3xl
           "
@@ -157,17 +153,14 @@ export default function ProjectsSection() {
       {/* SVG LINE */}
 
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none -z-10"
+        className="absolute inset-0 w-full h-full pointer-events-none z-0"
         viewBox="0 0 1200 1800"
         preserveAspectRatio="none"
       >
         <motion.path
-          d="M1100 0 
-             C900 200 1000 400 800 600
-             C600 800 900 1000 700 1200
-             C500 1400 900 1600 700 1800"
+          d="M1895 163.651C1708.18 514.119 1731.24 2.49992 1576.24 2.49996C1421.24 2.5 1452.24 163.652 1355.74 213.143C1259.25 262.634 1078.34 98.864 816.364 98.8656C554.39 98.8671 1023.33 917.037 1023.33 671.892C1023.33 426.747 621.308 980.775 689.017 1303.1C756.727 1625.43 608.242 1863.52 575.495 1716.73C542.748 1569.94 375.786 1696.25 231.435 1686.46C151.192 1641.85 -6.84665 1596.4 2.93381 1771.54C12.7143 1946.67 298.965 1969.61 440.868 1959.18C568.654 1932.79 728.837 1983.8 575.495 2160.95C275.824 2507.16 1480.91 2343.05 1581.77 2226.53C1650.76 2160.95 1705.95 2174.68 1650.76 2376.85C1595.57 2579.02 1682.19 2513.55 1738.95 2402.57C1762.82 2339.35 1824.1 2189.61 1839.82 2314.3"
           fill="none"
-          stroke="#d4a96a"
+          stroke="#DABFB5"
           strokeWidth="3"
           style={{ pathLength }}
           initial={{ pathLength: 0 }}
@@ -176,7 +169,7 @@ export default function ProjectsSection() {
 
       {/* TITLE */}
 
-      <div className="max-w-6xl mx-auto text-center mb-32">
+      <div className="max-w-6xl mx-auto text-center mb-12 relative">
         <h2
           className="
           text-3xl
@@ -184,6 +177,7 @@ export default function ProjectsSection() {
           text-[#6a4b4b]
           font-light
           font-title
+          z-10
           "
         >
           {t("title")}

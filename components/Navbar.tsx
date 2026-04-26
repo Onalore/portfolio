@@ -39,6 +39,7 @@ export default function Navbar({
 
   const links = [
     { id: "about", label: t("about") },
+    { id: "timeline", label: t("journey") },
     { id: "projects", label: t("projects") },
     { id: "contact", label: t("contact") },
   ];
@@ -69,13 +70,14 @@ export default function Navbar({
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="relative inline-block"
+              onClick={() => handleScrollTo("hero")}
+              className="relative inline-block cursor-pointer"
             >
               <motion.h1
                 className={clsx(
                   agbalumo.className,
                   "absolute inset-0",
-                  "text-[clamp(1.5rem,5vw,3rem)] lg:text-[clamp(1rem,2vw,4rem)]",
+                  "text-[clamp(1.5rem,5vw,3rem)] lg:text-[clamp(1rem,2vw,4rem)] invisible",
                 )}
                 animate={{
                   color: "rgba(255,255,255,0.25)",
@@ -111,7 +113,7 @@ export default function Navbar({
             {links.map((link) => (
               <li
                 key={link.id}
-                className="relative cursor-pointer group font-bold"
+                className="relative cursor-pointer group font-bold whitespace-nowrap"
                 onClick={() => handleScrollTo(link.id)}
               >
                 {link.label}

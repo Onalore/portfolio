@@ -1,12 +1,13 @@
 {
   "navbar": {
     "about": "About me",
+    "journey": "journey",
     "projects": "Projects",
     "contact": "Contact"
   },
   "hero": {
-    "title": "Ona Loré",
-    "subtitle": "Full Stack Developer · UI/UX & Creative Tech"
+    "title": "Full Stack Developer · UI/UX & Creative Tech",
+    "subtitle": "Systems Analyst"
   },
   "about": {
     "title": "About Me",
@@ -16,5 +17,82 @@
       "p3": "And I’m inspired by people: their stories, what they want to build, what they seek to express. I work with technology, but always from a human perspective.",
       "p4": "I appreciate the details that make everything work better."
     }
+  },
+  "timeline": {
+    "title": "My path in programming",
+    "subtitle": "... and a bit in life",
+    "exp1": {
+      "title": "2020 — Pandemic\nBootcamp",
+      "description": "My path started in a programming bootcamp. I built my first React projects, experimented with APIs and created small apps that sparked something in me: the feeling that I could turn ideas into something real."
+    },
+    "exp2": {
+      "title": "2021 — First job as a developer",
+      "description": "I landed my first IT job. I worked on:\nUI design\nReact websites\nAndroid apps in Kotlin\nSystem maintenance in C#\nIt was my first professional experience building products for real people."
+    },
+    "exp3": {
+      "title": "2022–2024 — Systems Analyst",
+      "description": "I kept studying and earned my Systems Analyst degree, diving deeper into architecture, logic, databases and good practices."
+    },
+    "exp4": {
+      "title": "2024 — Italy",
+      "description": "I moved to Italy to process my citizenship and continued working fully remote.\nI learned to manage my time, communicate better and keep quality high even from a distance."
+    },
+    "exp5": {
+      "title": "2025 — Sardinia",
+      "description": "I stepped away from the technical side to reconnect with the human side.\nI worked in hospitality, lived near the sea and adapted to a different rhythm.\nThat change of air brought back creativity, clarity and new energy to build."
+    },
+    "exp6": {
+      "title": "Present",
+      "description": "Today I live in southern Italy as a freelancer.\nI develop my own projects, study Prompt Engineering, build automations with N8N and bake artisanal croissants — because creating, in any form, is how I move through the world."
+    },
+    "img1": {
+      "title": "Season in Sardinia",
+      "subtitle": "A stretch of sea, work and outdoor life. Changing the pace helped me get back to what matters."
+    },
+    "img2": {
+      "title": "Citizenship and new beginnings",
+      "subtitle": "A long process that opened the doors to Europe and brought me to live here."
+    },
+    "img3": {
+      "title": "Medialunas, just like home",
+      "subtitle": "A project born from play: cooking, creating, photographing and sharing a piece of Argentina."
+    }
+  },
+  "projects": {
+    "title": "Some Projects",
+    "projectSummary": "Project Summary",
+    "myRole": "My Role",
+    "foodie": {
+      "description": "AI‑Powered Recipe Generator App",
+      "summary": "Foodie is a mobile application that generates personalized recipes based on available ingredients, dietary restrictions, and number of diners. Developed as an academic project, it delivers a functional prototype that simplifies daily meal planning and provides intelligent suggestions powered by Gemini AI. It also includes barcode scanning for regional products, making kitchen inventory management easier.",
+      "myRole": "I designed the mockup and implemented it faithfully in the front‑end. I also contributed to the backend using Node.js, collaborating on the creation and integration of the API."
+    },
+    "petinder": {
+      "description": "Mobile app for responsible pet adoption",
+      "summary": "Petinder is an academic project designed to improve the process of responsible pet adoption. It addresses two major issues: the large number of animals living on the streets and the difficulty of matching each animal with the right adopter. The app also aims to reduce the high return rate, which often happens when the adopted pet does not adapt to the adopter’s lifestyle. Petinder helps connect people and animals more accurately, increasing the chances of a successful and lasting adoption.",
+      "myRole": "I contributed to the front‑end development using React Native and Expo, implementing features such as maps and Firebase authentication. I also collaborated on the backend using Node.js, Express and Sequelize, working with a MySQL database."
+    },
+    "erp": {
+      "description": "Web application focused on internal administration and management",
+      "summary": "This academic project involved developing a web application centered on the internal administration and management of a small business. The system allows handling key information such as employees, positions, management areas and cost centers, following a structured and process‑oriented approach. The focus was placed on organization, business logic and the correct implementation of administrative modules.",
+      "myRole": "I participated in all stages of the project: system structure design, entity creation, development of the main modules and database configuration. Additionally, I deployed the application, the database and the server on Azure."
+    },
+    "personalPage": {
+      "description": "Responsive web page focused on UX, animations and storytelling",
+      "summary": "This project involved developing my personal website, an interactive experience designed to showcase my skills in UI/UX and advanced frontend development. The goal was to create smooth navigation with animations that support the visual narrative and reinforce the site's identity. The main challenge was integrating new technologies while achieving a responsive‑first design with fluid transitions and a clear structure.",
+      "myRole": "I designed and fully developed the website, implementing advanced animations with Framer Motion, responsive styling with Tailwind, and an internationalization system using i18n. I also built a dynamic timeline based on scroll calculations and optimized the visual experience across different devices."
+    }
+  },
+  "contact": {
+    "title": "Let's build something together",
+    "subtitle": "Available for freelance projects, collaborations, or end‑to‑end digital development roles.",
+    "whatsapp_label": "WhatsApp",
+    "whatsapp_value": "Direct chat",
+    "email_label": "Email",
+    "email_value": "Send email",
+    "linkedin_label": "LinkedIn",
+    "linkedin_value": "Professional profile",
+    "cv_label": "CV",
+    "cv_value": "Download CV"
   }
 }
