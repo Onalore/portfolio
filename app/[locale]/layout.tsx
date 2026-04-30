@@ -21,8 +21,11 @@ const workSans = Work_Sans({
 });
 
 export const metadata = {
-  title: "Portfolio | Tu Nombre",
+  title: "Ona Loré",
   description: "Portfolio personal creado con Next.js",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export function generateStaticParams() {
