@@ -29,7 +29,7 @@ const experiences = [
 ];
 
 const LAST_POINT_OFFSET_DESKTOP = 80;
-const LAST_POINT_OFFSET_MOBILE = 120;
+const LAST_POINT_OFFSET_MOBILE = 40;
 
 export default function TimelineSection() {
   const t = useTranslations("timeline");
@@ -183,7 +183,10 @@ export default function TimelineSection() {
               shadow-[0_4px_20px_rgba(0,0,0,0.7)]
             "
             style={{
-              top: !isMobile && isLast ? top - LAST_POINT_OFFSET_DESKTOP : top,
+              top:
+                !isMobile && isLast
+                  ? top - LAST_POINT_OFFSET_DESKTOP
+                  : top - LAST_POINT_OFFSET_MOBILE,
             }}
           />
         );

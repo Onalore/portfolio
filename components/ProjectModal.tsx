@@ -31,20 +31,19 @@ export default function ProjectModal({ project, onClose }: Props) {
     <>
       <motion.div
         key="overlay"
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 overflow-y-scroll no-scrollbar will-change-transform"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 overflow-y-scroll no-scrollbar"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
         <motion.div
-          layoutId={`card-${project.id}`}
           onClick={(e) => e.stopPropagation()}
           className="
             w-full h-full 
             lg:max-w-4xl lg:max-h-[90vh]
             overflow-y-auto
-            bg-white/10 backdrop-blur-xl
+            bg-white/10 backdrop-blur-md
             rounded-none lg:rounded-3xl
             "
           initial={{ borderRadius: 24 }}
@@ -61,14 +60,16 @@ export default function ProjectModal({ project, onClose }: Props) {
           </button>
 
           {/* image */}
-          <Image
-            src={project.image}
-            alt={project.title}
-            width={1200}
-            height={600}
-            priority
-            className="w-full h-[300px] object-cover"
-          />
+          <motion.div layoutId={`card-${project.id}`}>
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={1200}
+              height={600}
+              unoptimized
+              className="w-full h-[300px] object-cover"
+            />
+          </motion.div>
           <div className="p-8 text-white space-y-6">
             <h2 className="text-3xl font-title">{project.title}</h2>
 

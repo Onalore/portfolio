@@ -35,7 +35,7 @@ const projects = [
   {
     id: 2,
     title: "Petinder",
-    image: "/screen-scene-22.png",
+    image: "/screen-scene-2.png",
     translationKey: "petinder",
     techs: [
       "React Native",
@@ -69,7 +69,7 @@ const projects = [
     buttons: [
       {
         label: "Live Demo",
-        href: "",
+        href: "https://erp-chapdrcxg4b7fndz.brazilsouth-01.azurewebsites.net/",
       },
       {
         label: "GitHub",
